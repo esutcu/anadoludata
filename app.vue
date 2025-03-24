@@ -1,13 +1,17 @@
 <!-- app.vue -->
 <template>
-  <div class="min-h-screen bg-background font-sans antialiased">
-    <NavBar />
+  <NuxtLayout>
     <NuxtPage />
-  </div>
+  </NuxtLayout>
 </template>
 
 <script setup>
-import NavBar from '@/components/NavBar.vue';
+// Lang attribute'u eklemek için useHead kullanımı
+useHead({
+  htmlAttrs: {
+    lang: 'tr'
+  }
+})
 </script>
 
 <style>

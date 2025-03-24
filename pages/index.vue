@@ -1,6 +1,9 @@
 <!-- pages/index.vue -->
 <template>
   <div>
+    <!-- NavBar -->
+    <NavBar @acTeklifModal="acTeklifModal" />
+    
     <!-- Hero Bölümü -->
     <div id="anasayfa" class="bg-gradient-to-b from-anadolu-beige/10 to-anadolu-teal/5 py-20">
       <div class="container mx-auto px-4">
@@ -147,7 +150,7 @@
               Anadolu'nun teknoloji potansiyelini dünyaya taşıyoruz. İşletmelerin dijital dönüşümüne öncülük ederek, 
               yenilikçi çözümlerle müşterilerimizin başarılarına katkıda bulunuyoruz.
             </p>
-            <Button variant="outline" class="border-anadolu-teal text-anadolu-teal hover:bg-anadolu-teal/10" @click="teklifModalAcik = true">Teklif Al</Button>
+            <Button variant="outline" class="border-anadolu-teal text-anadolu-teal hover:bg-anadolu-teal/10" @click="acTeklifModal">Teklif Al</Button>
           </div>
         </div>
       </div>
@@ -165,78 +168,88 @@
         
         <div class="max-w-lg mx-auto">
           <Card>
-            <CardContent class="pt-6">
-              <form class="space-y-4" @submit.prevent="gonderFormu">
-                <div class="grid grid-cols-2 gap-4">
-                  <div class="space-y-2">
-                    <label class="text-sm font-medium">Ad <span class="text-red-500">*</span></label>
-                    <input 
-                      type="text" 
-                      class="w-full p-2 border rounded" 
-                      v-model="formData.ad"
-                      maxlength="50"
-                      required 
-                    />
-                  </div>
-                  <div class="space-y-2">
-                    <label class="text-sm font-medium">Soyad <span class="text-red-500">*</span></label>
-                    <input 
-                      type="text" 
-                      class="w-full p-2 border rounded" 
-                      v-model="formData.soyad"
-                      maxlength="50"
-                      required 
-                    />
-                  </div>
-                </div>
-                <div class="space-y-2">
-                  <label class="text-sm font-medium">E-posta <span class="text-red-500">*</span></label>
-                  <input 
-                    type="email" 
-                    class="w-full p-2 border rounded" 
-                    v-model="formData.email"
-                    maxlength="100"
-                    required 
-                  />
-                </div>
-                <div class="space-y-2">
-                  <label class="text-sm font-medium">Telefon</label>
-                  <input 
-                    type="tel" 
-                    class="w-full p-2 border rounded" 
-                    v-model="formData.telefon"
-                    maxlength="20"
-                  />
-                </div>
-                <div class="space-y-2">
-                  <label class="text-sm font-medium">Mesaj <span class="text-red-500">*</span></label>
-                  <textarea 
-                    rows="4" 
-                    class="w-full p-2 border rounded"
-                    v-model="formData.mesaj"
-                    maxlength="300"
-                    required
-                  ></textarea>
-                  <div class="text-xs text-gray-500 flex justify-between">
-                    <span>Kalan karakter: {{ 300 - formData.mesaj.length }}</span>
-                    <span>Maksimum 300 karakter</span>
-                  </div>
-                </div>
-                <Button 
-                  class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 text-white"
-                  type="submit" 
-                  :disabled="formGonderiliyor"
-                >
-                  {{ formGonderiliyor ? 'Gönderiliyor...' : 'Gönder' }}
-                </Button>
+  <CardContent class="pt-6">
+    <form class="space-y-4" @submit.prevent="gonderFormu">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label for="ad-input" class="text-sm font-medium">Ad <span class="text-red-500">*</span></label>
+          <input 
+            id="ad-input"
+            type="text" 
+            class="w-full p-2 border rounded" 
+            v-model="formData.ad"
+            maxlength="50"
+            placeholder="Adınız"
+            required 
+          />
+        </div>
+        <div class="space-y-2">
+          <label for="soyad-input" class="text-sm font-medium">Soyad <span class="text-red-500">*</span></label>
+          <input 
+            id="soyad-input"
+            type="text" 
+            class="w-full p-2 border rounded" 
+            v-model="formData.soyad"
+            maxlength="50"
+            placeholder="Soyadınız"
+            required 
+          />
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label for="email-input" class="text-sm font-medium">E-posta <span class="text-red-500">*</span></label>
+        <input 
+          id="email-input"
+          type="email" 
+          class="w-full p-2 border rounded" 
+          v-model="formData.email"
+          maxlength="100"
+          placeholder="E-posta adresiniz"
+          required 
+        />
+      </div>
+      <div class="space-y-2">
+        <label for="telefon-input" class="text-sm font-medium">Telefon</label>
+        <input 
+          id="telefon-input"
+          type="tel" 
+          class="w-full p-2 border rounded" 
+          v-model="formData.telefon"
+          maxlength="20"
+          placeholder="Telefon numaranız"
+        />
+      </div>
+      <div class="space-y-2">
+        <label for="mesaj-input" class="text-sm font-medium">Mesaj <span class="text-red-500">*</span></label>
+        <textarea 
+          id="mesaj-input"
+          rows="4" 
+          class="w-full p-2 border rounded"
+          v-model="formData.mesaj"
+          maxlength="300"
+          placeholder="Mesajınız..."
+          required
+        ></textarea>
+        <div class="text-xs text-gray-500 flex justify-between">
+          <span>Kalan karakter: {{ 300 - formData.mesaj.length }}</span>
+          <span>Maksimum 300 karakter</span>
+        </div>
+      </div>
+      <Button 
+        class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 text-white"
+        type="submit" 
+        :disabled="formGonderiliyor"
+      >
+        {{ formGonderiliyor ? 'Gönderiliyor...' : 'Gönder' }}
+      </Button>
 
-                <!-- Form gönderim durumu -->
-                <div v-if="formDurumu" class="mt-4 p-3 rounded" :class="formDurumu.basarili ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-                  {{ formDurumu.mesaj }}
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+      <!-- Form gönderim durumu -->
+      <div v-if="formDurumu" class="mt-4 p-3 rounded" :class="formDurumu.basarili ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+        {{ formDurumu.mesaj }}
+      </div>
+    </form>
+  </CardContent>
+</Card>
         </div>
       </div>
     </div>
@@ -246,19 +259,19 @@
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-  <div class="flex items-center gap-2 mb-4">
-    <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-8 w-auto">
-    <h3 class="text-xl font-bold text-anadolu-beige">AnadoluData</h3>
-  </div>
-  <p class="text-gray-300">Modern teknoloji ve bütçe dostu çözümler</p>
-</div>
+            <div class="flex items-center gap-2 mb-4">
+              <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-8 w-auto">
+              <h3 class="text-xl font-bold text-anadolu-beige">AnadoluData</h3>
+            </div>
+            <p class="text-gray-300">Modern teknoloji ve bütçe dostu çözümler</p>
+          </div>
           <div>
             <h4 class="font-bold mb-4 text-anadolu-beige">Hizmetler</h4>
             <ul class="space-y-2">
-              <li>Web Geliştirme</li>
-              <li>Mobil Uygulamalar</li>
-              <li>Blockchain</li>
-              <li>CRM Çözümleri</li>
+              <li><a href="#hizmetler" class="hover:text-anadolu-beige transition-colors" @click.prevent="kaydirSectionIcin('hizmetler')">Web Geliştirme</a></li>
+              <li><a href="#hizmetler" class="hover:text-anadolu-beige transition-colors" @click.prevent="kaydirSectionIcin('hizmetler')">Mobil Uygulamalar</a></li>
+              <li><a href="#hizmetler" class="hover:text-anadolu-beige transition-colors" @click.prevent="kaydirSectionIcin('hizmetler')">Blockchain</a></li>
+              <li><a href="#hizmetler" class="hover:text-anadolu-beige transition-colors" @click.prevent="kaydirSectionIcin('hizmetler')">CRM Çözümleri</a></li>
             </ul>
           </div>
           <div>
@@ -286,6 +299,7 @@ import { useMotion } from '@vueuse/motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import TeklifModal from '@/components/TeklifModal.vue'
+import NavBar from '@/components/NavBar.vue'
 
 const hero = ref(null)
 const features = ref(null)
@@ -293,7 +307,13 @@ const tech = ref(null)
 const about = ref(null)
 const contact = ref(null)
 
+// Teklif modal durumu
 const teklifModalAcik = ref(false)
+
+// Teklif modalını açma fonksiyonu
+const acTeklifModal = () => {
+  teklifModalAcik.value = true;
+}
 
 const formData = ref({
   ad: '',
@@ -306,10 +326,18 @@ const formData = ref({
 const formGonderiliyor = ref(false);
 const formDurumu = ref(null);
 
+// Düzeltilmiş kaydırma fonksiyonu
 const kaydirSectionIcin = (id) => {
   const element = document.getElementById(id);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    // Offset ekleyerek navbar'ın altına kaydır
+    const yOffset = -80; // Navbar yüksekliğine göre ayarlayın
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
+    });
   }
 };
 
