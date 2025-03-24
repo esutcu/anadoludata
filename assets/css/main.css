@@ -1,0 +1,86 @@
+/* assets/css/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS düzeltmeleri */
+html, :host {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+:root {
+  --anadolu-teal: #0F666D;
+  --anadolu-beige: #C5B582;
+  --anadolu-navy: #023756;
+  --anadolu-gold: #958E62;
+}
+
+/* Logo renklerine göre tema renkleri */
+.bg-anadolu-teal {
+  background-color: var(--anadolu-teal);
+}
+
+.text-anadolu-teal {
+  color: var(--anadolu-teal);
+}
+
+.border-anadolu-teal {
+  border-color: var(--anadolu-teal);
+}
+
+.hover\:bg-anadolu-teal:hover {
+  background-color: var(--anadolu-teal);
+}
+
+.hover\:text-anadolu-teal:hover {
+  color: var(--anadolu-teal);
+}
+
+.text-anadolu-beige {
+  color: var(--anadolu-beige);
+}
+
+.bg-anadolu-beige {
+  background-color: var(--anadolu-beige);
+}
+
+.hover\:text-anadolu-beige:hover {
+  color: var(--anadolu-beige);
+}
+
+.hover\:bg-anadolu-beige:hover {
+  background-color: var(--anadolu-beige);
+}
+
+.text-anadolu-navy {
+  color: var(--anadolu-navy);
+}
+
+.bg-anadolu-navy {
+  background-color: var(--anadolu-navy);
+}
+
+.hover\:text-anadolu-navy:hover {
+  color: var(--anadolu-navy);
+}
+
+.hover\:bg-anadolu-navy:hover {
+  background-color: var(--anadolu-navy);
+}
+
+.text-anadolu-gold {
+  color: var(--anadolu-gold);
+}
+
+.bg-anadolu-gold {
+  background-color: var(--anadolu-gold);
+}
+
+.hover\:text-anadolu-gold:hover {
+  color: var(--anadolu-gold);
+}
+
+.hover\:bg-anadolu-gold:hover {
+  background-color: var(--anadolu-gold);
+}
