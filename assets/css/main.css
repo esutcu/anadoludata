@@ -9,11 +9,26 @@ html, :host {
   text-size-adjust: 100%;
 }
 
+/* Safari için backdrop-filter desteği */
+.backdrop-blur,
+.window,
+[class*="backdrop-filter"] {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
 :root {
   --anadolu-teal: #0F666D;
   --anadolu-beige: #C5B582;
   --anadolu-navy: #023756;
   --anadolu-gold: #958E62;
+}
+
+/* Safari için backdrop-filter desteği */
+.backdrop-blur,
+.backdrop-filter {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 /* Logo renklerine göre tema renkleri */

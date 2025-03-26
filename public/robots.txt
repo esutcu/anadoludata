@@ -1,1 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anadoludata.com/sitemap.xml
 

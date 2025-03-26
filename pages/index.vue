@@ -26,8 +26,7 @@
                 src="/images/herotech.webp" 
                 alt="AnadoluData Teknoloji" 
                 class="w-full h-auto"
-                loading="eager"
-                fetchpriority="high">
+                loading="eager">
             </div>
           </div>
         </div>
@@ -168,88 +167,88 @@
         
         <div class="max-w-lg mx-auto">
           <Card>
-  <CardContent class="pt-6">
-    <form class="space-y-4" @submit.prevent="gonderFormu">
-      <div class="grid grid-cols-2 gap-4">
-        <div class="space-y-2">
-          <label for="ad-input" class="text-sm font-medium">Ad <span class="text-red-500">*</span></label>
-          <input 
-            id="ad-input"
-            type="text" 
-            class="w-full p-2 border rounded" 
-            v-model="formData.ad"
-            maxlength="50"
-            placeholder="Adınız"
-            required 
-          />
-        </div>
-        <div class="space-y-2">
-          <label for="soyad-input" class="text-sm font-medium">Soyad <span class="text-red-500">*</span></label>
-          <input 
-            id="soyad-input"
-            type="text" 
-            class="w-full p-2 border rounded" 
-            v-model="formData.soyad"
-            maxlength="50"
-            placeholder="Soyadınız"
-            required 
-          />
-        </div>
-      </div>
-      <div class="space-y-2">
-        <label for="email-input" class="text-sm font-medium">E-posta <span class="text-red-500">*</span></label>
-        <input 
-          id="email-input"
-          type="email" 
-          class="w-full p-2 border rounded" 
-          v-model="formData.email"
-          maxlength="100"
-          placeholder="E-posta adresiniz"
-          required 
-        />
-      </div>
-      <div class="space-y-2">
-        <label for="telefon-input" class="text-sm font-medium">Telefon</label>
-        <input 
-          id="telefon-input"
-          type="tel" 
-          class="w-full p-2 border rounded" 
-          v-model="formData.telefon"
-          maxlength="20"
-          placeholder="Telefon numaranız"
-        />
-      </div>
-      <div class="space-y-2">
-        <label for="mesaj-input" class="text-sm font-medium">Mesaj <span class="text-red-500">*</span></label>
-        <textarea 
-          id="mesaj-input"
-          rows="4" 
-          class="w-full p-2 border rounded"
-          v-model="formData.mesaj"
-          maxlength="300"
-          placeholder="Mesajınız..."
-          required
-        ></textarea>
-        <div class="text-xs text-gray-500 flex justify-between">
-          <span>Kalan karakter: {{ 300 - formData.mesaj.length }}</span>
-          <span>Maksimum 300 karakter</span>
-        </div>
-      </div>
-      <Button 
-        class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 text-white"
-        type="submit" 
-        :disabled="formGonderiliyor"
-      >
-        {{ formGonderiliyor ? 'Gönderiliyor...' : 'Gönder' }}
-      </Button>
+            <CardContent class="pt-6">
+              <form class="space-y-4" @submit.prevent="gonderFormu">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="space-y-2">
+                    <label for="ad-input" class="text-sm font-medium">Ad <span class="text-red-500">*</span></label>
+                    <input 
+                      id="ad-input"
+                      type="text" 
+                      class="w-full p-2 border rounded" 
+                      v-model="formData.ad"
+                      maxlength="50"
+                      placeholder="Adınız"
+                      required 
+                    />
+                  </div>
+                  <div class="space-y-2">
+                    <label for="soyad-input" class="text-sm font-medium">Soyad <span class="text-red-500">*</span></label>
+                    <input 
+                      id="soyad-input"
+                      type="text" 
+                      class="w-full p-2 border rounded" 
+                      v-model="formData.soyad"
+                      maxlength="50"
+                      placeholder="Soyadınız"
+                      required 
+                    />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <label for="email-input" class="text-sm font-medium">E-posta <span class="text-red-500">*</span></label>
+                  <input 
+                    id="email-input"
+                    type="email" 
+                    class="w-full p-2 border rounded" 
+                    v-model="formData.email"
+                    maxlength="100"
+                    placeholder="E-posta adresiniz"
+                    required 
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="telefon-input" class="text-sm font-medium">Telefon</label>
+                  <input 
+                    id="telefon-input"
+                    type="tel" 
+                    class="w-full p-2 border rounded" 
+                    v-model="formData.telefon"
+                    maxlength="20"
+                    placeholder="Telefon numaranız"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="mesaj-input" class="text-sm font-medium">Mesaj <span class="text-red-500">*</span></label>
+                  <textarea 
+                    id="mesaj-input"
+                    rows="4" 
+                    class="w-full p-2 border rounded"
+                    v-model="formData.mesaj"
+                    maxlength="300"
+                    placeholder="Mesajınız..."
+                    required
+                  ></textarea>
+                  <div class="text-xs text-gray-500 flex justify-between">
+                    <span>Kalan karakter: {{ 300 - formData.mesaj.length }}</span>
+                    <span>Maksimum 300 karakter</span>
+                  </div>
+                </div>
+                <Button 
+                  class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 text-white"
+                  type="submit" 
+                  :disabled="formGonderiliyor"
+                >
+                  {{ formGonderiliyor ? 'Gönderiliyor...' : 'Gönder' }}
+                </Button>
 
-      <!-- Form gönderim durumu -->
-      <div v-if="formDurumu" class="mt-4 p-3 rounded" :class="formDurumu.basarili ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-        {{ formDurumu.mesaj }}
-      </div>
-    </form>
-  </CardContent>
-</Card>
+                <!-- Form gönderim durumu -->
+                <div v-if="formDurumu" class="mt-4 p-3 rounded" :class="formDurumu.basarili ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
+                  {{ formDurumu.mesaj }}
+                </div>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>
@@ -264,6 +263,36 @@
               <h3 class="text-xl font-bold text-anadolu-beige">AnadoluData</h3>
             </div>
             <p class="text-gray-300">Modern teknoloji ve bütçe dostu çözümler</p>
+            
+<!-- Sosyal Medya Linkleri -->
+<div class="flex space-x-4 mt-4">
+  <a href="https://instagram.com/anadoludata" target="_blank" rel="noopener noreferrer" 
+     class="text-white hover:text-anadolu-beige transition-colors"
+     title="Instagram'da AnadoluData"
+     aria-label="Instagram'da AnadoluData">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  </a>
+  <a href="https://twitter.com/anadoludata" target="_blank" rel="noopener noreferrer"
+     class="text-white hover:text-anadolu-beige transition-colors"
+     title="Twitter'da AnadoluData"
+     aria-label="Twitter'da AnadoluData">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+    </svg>
+  </a>
+  <a href="https://github.com/anadoludata" target="_blank" rel="noopener noreferrer"
+     class="text-white hover:text-anadolu-beige transition-colors"
+     title="GitHub'da AnadoluData"
+     aria-label="GitHub'da AnadoluData">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg>
+  </a>
+</div>
           </div>
           <div>
             <h4 class="font-bold mb-4 text-anadolu-beige">Hizmetler</h4>
@@ -290,6 +319,9 @@
     
     <!-- Teklif Modal -->
     <TeklifModal v-model="teklifModalAcik" />
+    
+    <!-- ScrollToTop Butonu -->
+    <ScrollToTop />
   </div>
 </template>
 
@@ -300,6 +332,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import TeklifModal from '@/components/TeklifModal.vue'
 import NavBar from '@/components/NavBar.vue'
+import ScrollToTop from '@/components/ScrollToTop.vue'
 
 const hero = ref(null)
 const features = ref(null)
