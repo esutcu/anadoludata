@@ -18,19 +18,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Node.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Vue.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Node.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/tailwindcss.svg" alt="Tailwind CSS" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Tailwind CSS</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -46,19 +47,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Node.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/nuxt.svg" alt="Nuxt.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Nuxt.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/firebase.svg" alt="Firebase" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Firebase</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/tailwindcss.svg" alt="Tailwind CSS" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Tailwind CSS</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -74,19 +76,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Node.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Vue.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/stripe.svg" alt="Stripe" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Stripe</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/tailwindcss.svg" alt="Tailwind CSS" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Tailwind CSS</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -102,19 +105,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Node.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Vue.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/supabase.svg" alt="Supabase" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Supabase</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/tailwindcss.svg" alt="Tailwind CSS" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Tailwind CSS</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -130,19 +134,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/android.svg" alt="Android" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Android</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Vue.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/android.svg" alt="Android" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Android</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/firebase.svg" alt="Firebase" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Firebase</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
@@ -158,19 +163,20 @@
               <div class="flex flex-col space-y-4">
                 <h3 class="font-semibold text-gray-800">Kullanılan Teknolojiler:</h3>
                 <div class="flex flex-wrap gap-6">
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Vue.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/node_js.svg" alt="Node.js" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Node.js</span>
-                  </div>
-                  <div class="flex flex-col items-center transition-transform hover:scale-110">
-                    <img src="/images/icons/social/tailwindcss.svg" alt="TailwindCSS" class="h-12 w-12 mb-2">
-                    <span class="text-sm font-medium">Tailwind CSS</span>
-                  </div>
-                </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/vue.svg" alt="Vue.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Vue.js</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/bsc.svg" alt="Binance Smart Chain" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">BSC</span>
+  </div>
+  <div class="flex flex-col items-center transition-transform hover:scale-110">
+    <img src="/images/icons/social/ethers.svg" alt="Ethers.js" class="h-12 w-12 mb-2">
+    <span class="text-sm font-medium">Ethers.js</span>
+  </div>
+</div>
+
               </div>
             </div>
           </div>
