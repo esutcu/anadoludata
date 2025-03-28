@@ -1,5 +1,6 @@
 // nuxt.config.ts
 import { defineNuxtConfig } from 'nuxt/config'
+import type { NuxtConfig } from 'nuxt/schema'
 
 export default defineNuxtConfig({
   typescript: {
@@ -14,7 +15,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
-    '@nuxt/image'
+    '@nuxt/image',
+    'nuxt-schema-org'
   ],
 
   postcss: {
@@ -41,7 +43,6 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' }
-
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -51,7 +52,117 @@ export default defineNuxtConfig({
       ],
       htmlAttrs: {
         lang: 'tr'
-      }
+      },
+      // Schema.org yapılandırmaları eklendi
+      script: [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "AnadoluData",
+            "url": "https://anadoludata.com",
+            "logo": "https://anadoludata.com/images/logo.svg",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "bilgi@anadoludata.com",
+              "contactType": "customer service",
+              "availableLanguage": ["Turkish", "English"]
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "İstanbul",
+              "addressRegion": "İstanbul",
+              "addressCountry": "TR"
+            },
+            "sameAs": [
+              "https://instagram.com/anadoludata",
+              "https://twitter.com/anadoludata",
+              "https://github.com/anadoludata"
+            ]
+          })
+        },
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "AnadoluData - Teknoloji Çözümleri",
+            "url": "https://anadoludata.com",
+            "description": "AnadoluData web, mobil, blockchain ve CRM çözümleri sunan teknoloji firması",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://anadoludata.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })
+        },
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "AnadoluData",
+            "image": "https://anadoludata.com/images/herotech.webp",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "İstanbul",
+              "addressRegion": "İstanbul",
+              "addressCountry": "TR"
+            },
+            "email": "bilgi@anadoludata.com",
+            "priceRange": "$$",
+            "description": "AnadoluData web, mobil, blockchain ve CRM çözümleri sunan teknoloji firması"
+          })
+        },
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "serviceType": "Web Geliştirme",
+              "provider": {
+                "@type": "Organization",
+                "name": "AnadoluData"
+              },
+              "description": "Modern ve hızlı web uygulamaları, e-ticaret sistemleri ve kurumsal web siteleri geliştiriyoruz.",
+              "areaServed": {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "serviceType": "Mobil Uygulama Geliştirme",
+              "provider": {
+                "@type": "Organization",
+                "name": "AnadoluData"
+              },
+              "description": "iOS ve Android için native performansta, kullanıcı dostu mobil uygulamalar tasarlıyoruz.",
+              "areaServed": {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "serviceType": "Blockchain Teknolojileri",
+              "provider": {
+                "@type": "Organization",
+                "name": "AnadoluData"
+              },
+              "description": "Güvenli ve şeffaf blockchain tabanlı çözümlerle işletmenizi geleceğe hazırlıyoruz.",
+              "areaServed": {
+                "@type": "Country",
+                "name": "Türkiye"
+              }
+            }
+          ])
+        }
+      ]
     }
   },
 
@@ -116,7 +227,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // @ts-ignore
+  // PWA yapılandırması
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
@@ -138,12 +249,36 @@ export default defineNuxtConfig({
       ]
     },
     workbox: {
+      // Geliştirilmiş offline deneyimi için cache stratejileri
+      navigateFallback: '/',
       runtimeCaching: [
+        // HTML ve API istekleri için NetworkFirst
         {
           urlPattern: /^https:\/\/anadoludata\.com\/.*$/,
           handler: 'NetworkFirst',
           options: {
-            cacheName: 'site-cache'
+            cacheName: 'site-cache',
+            networkTimeoutSeconds: 10
+          }
+        },
+        // Resimler için CacheFirst (önce önbellekten yükle)
+        {
+          urlPattern: /\.(png|jpg|jpeg|svg|webp)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'image-cache',
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 30 * 24 * 60 * 60 // 30 gün
+            }
+          }
+        },
+        // CSS, JS ve font dosyaları için StaleWhileRevalidate
+        {
+          urlPattern: /\.(css|js|woff2|ttf|woff)$/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'assets-cache'
           }
         }
       ]
@@ -154,4 +289,4 @@ export default defineNuxtConfig({
     format: ['webp', 'avif', 'png', 'jpg'],
     quality: 80
   }
-})
+} as unknown as NuxtConfig)

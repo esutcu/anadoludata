@@ -1,8 +1,16 @@
-// tsconfig.json
 {
   "extends": "./.nuxt/tsconfig.json",
-  "include": ["nuxt.config.ts", "types"],
+  "include": [
+    "nuxt.config.ts",
+    "types",
+    "modules",
+    "composables",
+    "plugins"
+  ],
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   }
 }

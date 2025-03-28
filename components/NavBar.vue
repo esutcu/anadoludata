@@ -14,7 +14,7 @@
             v-for="(item, index) in menuItems" 
             :key="index" 
             :to="item.link"
-            class="text-gray-700 hover:text-anadolu-teal transition-colors duration-200"
+            class="text-gray-700 hover:text-anadolu-teal transition-colors duration-200 nav-item"
             :class="{ 'font-medium': $route.path === item.link }"
           >
             <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
@@ -23,7 +23,7 @@
           <!-- Dil Seçici Eklendi -->
           <LanguageSelector />
           
-          <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90" @click="acTeklifModal">
+          <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90 nav-item" @click="acTeklifModal">
             <TranslatedText turkish="Teklif Al" english="Get Quo" />
           </Button>
         </div>
@@ -57,13 +57,13 @@
           v-for="(item, index) in menuItems" 
           :key="index" 
           :to="item.link"
-          class="block py-2 text-gray-700 hover:text-anadolu-teal"
+          class="block py-2 text-gray-700 hover:text-anadolu-teal nav-item"
           :class="{ 'font-medium': $route.path === item.link }"
           @click="mobileMenuOpen = false"
         >
           <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
         </NuxtLink>
-        <Button class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90" @click="mobileTeklifOpen">
+        <Button class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 nav-item" @click="mobileTeklifOpen">
           <TranslatedText turkish="Teklif Al" english="Get Quo" />
         </Button>
       </div>
@@ -100,3 +100,14 @@ const mobileTeklifOpen = () => {
   emit('acTeklifModal');
 };
 </script>
+
+<style scoped>
+.nav-item {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover, .nav-item:active {
+  transform: scale(1.05);
+}
+</style>
