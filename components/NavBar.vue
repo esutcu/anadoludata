@@ -1,113 +1,201 @@
+<!-- components/NavBar.vue -->
 <template>
-  <nav class="sticky top-0 z-50 bg-white shadow-md">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center gap-2">
-          <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-8 w-auto" />
-          <h1 class="text-xl font-bold text-anadolu-teal">AnadoluData</h1>
-        </NuxtLink>
+  <div class="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="container mx-auto flex h-16 items-center justify-between px-4">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-8 w-auto">
+          <span class="text-xl font-bold text-anadolu-teal">AnadoluData</span>
+        </a>
+      </div>
 
-        <!-- Menü Öğeleri - Mobilde gizli, orta ve büyük ekranlarda görünür -->
-        <div class="hidden md:flex items-center space-x-6">
-          <NuxtLink 
-            v-for="(item, index) in menuItems" 
-            :key="index" 
-            :to="item.link"
-            class="text-gray-700 hover:text-anadolu-teal transition-colors duration-200 nav-item"
-            :class="{ 'font-medium': $route.path === item.link }"
-          >
-            <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
-          </NuxtLink>
-          
-          <!-- Dil Seçici Eklendi -->
-          <LanguageSelector />
-          
-          <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90 nav-item" @click="acTeklifModal">
-            <TranslatedText turkish="Teklif Al" english="Get Quo" />
-          </Button>
-        </div>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex">
+        <NavigationMenu>
+          <NavigationMenuList class="space-x-6">
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#anasayfa" class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition">
+                Anasayfa
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
-        <!-- Mobil Menü Butonu -->
-        <div class="md:hidden flex items-center space-x-2">
-          <LanguageSelector />
-          <button 
-            @click="mobileMenuOpen = !mobileMenuOpen" 
-            class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-anadolu-teal rounded-md p-1"
-            aria-label="Mobil menüyü aç/kapat" 
-          >
-            <svg v-if="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition">
+                Hizmetler
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div class="w-48 p-2">
+                  <NavigationMenuLink 
+                    href="#hizmetler" 
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-anadolu-beige/10 hover:text-anadolu-teal"
+                    @click="kaydirSectionIcin('hizmetler', 0)">
+                    Web Çözümleri
+                  </NavigationMenuLink>
+                  <NavigationMenuLink 
+                    href="#hizmetler" 
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-anadolu-beige/10 hover:text-anadolu-teal"
+                    @click="kaydirSectionIcin('hizmetler', 1)">
+                    Mobil Uygulamalar
+                  </NavigationMenuLink>
+                  <NavigationMenuLink 
+                    href="#hizmetler" 
+                    class="block rounded-md px-3 py-2 text-sm font-medium hover:bg-anadolu-beige/10 hover:text-anadolu-teal"
+                    @click="kaydirSectionIcin('hizmetler', 2)">
+                    Blockchain
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="#teknolojiler" 
+                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                @click="kaydirSectionIcin('teknolojiler')">
+                Teknolojiler
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="#hakkimizda" 
+                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                @click="kaydirSectionIcin('hakkimizda')">
+                Hakkımızda
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuLink 
+                href="#iletisim" 
+                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                @click="kaydirSectionIcin('iletisim')">
+                İletişim
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="https://x.com/anadoludata_" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+          <img src="/images/icons/social/twitter.svg" alt="Twitter" class="w-5 h-5">
+        </a>
+        <a href="https://www.instagram.com/anadoludata/" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+          <img src="/images/icons/social/instagram.svg" alt="Instagram" class="w-5 h-5">
+        </a>
+        <a href="https://github.com/anadoludata" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+          <img src="/images/icons/social/github.svg" alt="GitHub" class="w-5 h-5">
+        </a>
+      </div>
+
+      <!-- Contact Button -->
+      <div class="hidden md:block ml-6">
+        <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90 text-white" @click="teklifModalAcik = true">Teklif Al</Button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="md:hidden" 
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        aria-label="Menüyü Aç/Kapat"
+        title="Menüyü Aç/Kapat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Mobile Menu -->
+      <div v-if="mobileMenuOpen" class="absolute inset-x-0 top-16 z-50 md:hidden">
+        <div class="border-t bg-white p-4 shadow-lg">
+          <div class="flex flex-col space-y-3">
+            <!-- Menü öğelerini kapsayan div'e display: block ekle -->
+            <div class="block w-full">
+              <a href="#anasayfa" class="block w-full py-2 font-medium text-anadolu-navy hover:text-anadolu-teal transition" @click="kaydirSectionIcin('anasayfa')">Anasayfa</a>
+              
+              <button @click="mobileServicesOpen = !mobileServicesOpen" class="flex w-full items-center justify-between py-2 font-medium text-anadolu-navy hover:text-anadolu-teal transition">
+                <span>Hizmetler</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </button>
+              
+              <div v-if="mobileServicesOpen" class="pl-4 py-2 space-y-2">
+                <a href="#hizmetler" class="block text-sm font-medium text-anadolu-navy hover:text-anadolu-teal transition py-2" @click="kaydirSectionIcin('hizmetler', 0)">Web Çözümleri</a>
+                <a href="#hizmetler" class="block text-sm font-medium text-anadolu-navy hover:text-anadolu-teal transition py-2" @click="kaydirSectionIcin('hizmetler', 1)">Mobil Uygulamalar</a>
+                <a href="#hizmetler" class="block text-sm font-medium text-anadolu-navy hover:text-anadolu-teal transition py-2" @click="kaydirSectionIcin('hizmetler', 2)">Blockchain</a>
+              </div>
+              
+              <a href="#teknolojiler" class="block w-full py-2 font-medium text-anadolu-navy hover:text-anadolu-teal transition" @click="kaydirSectionIcin('teknolojiler')">Teknolojiler</a>
+              <a href="#hakkimizda" class="block w-full py-2 font-medium text-anadolu-navy hover:text-anadolu-teal transition" @click="kaydirSectionIcin('hakkimizda')">Hakkımızda</a>
+              <a href="#iletisim" class="block w-full py-2 font-medium text-anadolu-navy hover:text-anadolu-teal transition" @click="kaydirSectionIcin('iletisim')">İletişim</a>
+            </div>
+          </div>
+          
+          <!-- Mobile Social Media -->
+          <div class="flex items-center space-x-4 mt-4 border-t pt-4">
+            <a href="https://x.com/anadoludata_" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+              <img src="/images/icons/social/twitter.svg" alt="Twitter" class="w-5 h-5">
+            </a>
+            <a href="https://www.instagram.com/anadoludata/" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+              <img src="/images/icons/social/instagram.svg" alt="Instagram" class="w-5 h-5">
+            </a>
+            <a href="https://github.com/anadoludata" target="_blank" class="text-anadolu-navy hover:text-anadolu-teal transition">
+              <img src="/images/icons/social/github.svg" alt="GitHub" class="w-5 h-5">
+            </a>
+          </div>
+          
+          <div class="mt-4">
+            <Button class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 text-white" @click="teklifModalAcik = true">Teklif Al</Button>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Mobil Menü -->
-    <div 
-      v-if="mobileMenuOpen" 
-      class="md:hidden bg-white shadow-lg transform transition-all duration-300"
-    >
-      <div class="container mx-auto px-4 py-3 space-y-2">
-        <NuxtLink 
-          v-for="(item, index) in menuItems" 
-          :key="index" 
-          :to="item.link"
-          class="block py-2 text-gray-700 hover:text-anadolu-teal nav-item"
-          :class="{ 'font-medium': $route.path === item.link }"
-          @click="mobileMenuOpen = false"
-        >
-          <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
-        </NuxtLink>
-        <Button class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90 nav-item" @click="mobileTeklifOpen">
-          <TranslatedText turkish="Teklif Al" english="Get Quo" />
-        </Button>
-      </div>
-    </div>
-  </nav>
+  </div>
+  
+  <!-- Teklif Al Modal -->
+  <TeklifModal v-model="teklifModalAcik" />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
-import { useRoute } from 'vue-router';
-import LanguageSelector from '~/components/LanguageSelector.vue';
-import TranslatedText from '~/components/TranslatedText.vue';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from '@/components/ui/navigation-menu';
+import TeklifModal from './TeklifModal.vue';
 
-const route = useRoute();
 const mobileMenuOpen = ref(false);
+const mobileServicesOpen = ref(false);
+const teklifModalAcik = ref(false);
 
-const menuItems = [
-  { labelTR: 'Ana Sayfa', labelEN: 'Home', link: '/' },
-  { labelTR: 'Hizmetler', labelEN: 'Services', link: '/#hizmetler' },
-  { labelTR: 'Teknolojiler', labelEN: 'Technologies', link: '/#teknolojiler' },
-  { labelTR: 'Çalışmalarımız', labelEN: 'Our Projects', link: '/referanslar' },
-  { labelTR: 'Hakkımızda', labelEN: 'About Us', link: '/#hakkimizda' }
-];
-
-const emit = defineEmits(['acTeklifModal']);
-
-const acTeklifModal = () => {
-  emit('acTeklifModal');
-};
-
-const mobileTeklifOpen = () => {
-  mobileMenuOpen.value = false;
-  emit('acTeklifModal');
+const kaydirSectionIcin = (id, kartIndex) => {
+  const element = document.getElementById(id);
+  if (element) {
+    mobileMenuOpen.value = false; // Mobil menüyü kapat
+    element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Eğer kartIndex belirtilmişse, kartı vurgula
+    if (kartIndex !== undefined) {
+      setTimeout(() => {
+        const kartlar = document.querySelectorAll('#hizmetler .grid > div');
+        if (kartlar[kartIndex]) {
+          kartlar[kartIndex].classList.add('ring-2', 'ring-anadolu-teal');
+          setTimeout(() => {
+            kartlar[kartIndex].classList.remove('ring-2', 'ring-anadolu-teal');
+          }, 2000);
+        }
+      }, 800);
+    }
+  }
 };
 </script>
-
-<style scoped>
-.nav-item {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.nav-item:hover, .nav-item:active {
-  transform: scale(1.05);
-}
-</style>

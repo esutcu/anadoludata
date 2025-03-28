@@ -567,6 +567,7 @@ import NavBar from '@/components/NavBar.vue'
 import ScrollToTop from '@/components/ScrollToTop.vue'
 import TranslatedText from '@/components/TranslatedText.vue'
 import { useLanguage } from '@/composables/useLanguage'
+import { useRuntimeConfig } from '#app'
 
 const hero = ref(null)
 const features = ref(null)
@@ -615,8 +616,10 @@ const gonderFormu = async () => {
   formGonderiliyor.value = true;
   
   try {
+    const { apiBase } = useRuntimeConfig().public;
+    
     // Sunucuya gönder
-    const response = await fetch('http://66.179.240.190:3000/api/iletisim', {
+    const response = await fetch(`${apiBase}/iletisim`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -628,11 +631,10 @@ const gonderFormu = async () => {
       throw new Error('Sunucu hatası');
     }
     
- // Başarılı gönderim
- formDurumu.value = {
+    // Başarılı gönderim
+    formDurumu.value = {
       basarili: true,
-      mesajTR: 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.',
-      mesajEN: 'Your message has been sent successfully. We will get back to you as soon as possible.'
+      mesaj: 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.'
     };
     
     // Formu temizle
@@ -647,8 +649,7 @@ const gonderFormu = async () => {
     // Hata durumu
     formDurumu.value = {
       basarili: false,
-      mesajTR: 'Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.',
-      mesajEN: 'An error occurred while sending your message. Please try again later.'
+      mesaj: 'Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
     };
     console.error('Form gönderim hatası:', error);
   } finally {

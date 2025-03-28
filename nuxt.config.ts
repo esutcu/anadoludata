@@ -61,7 +61,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'shortcut icon', href: '/favicon.ico' },
-        { rel: 'apple-touch-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'manifest', href: '/manifest.webmanifest' },
         { rel: 'preload', as: 'image', href: '/images/herotech.webp' }
         
@@ -194,12 +194,6 @@ export default defineNuxtConfig({
     },
     compressPublicAssets: true,
 
-    devProxy: {
-      '/api': {
-        target: 'http://66.179.240.190:3000',
-        changeOrigin: true
-      }
-    },
 
     routeRules: {
       '/_nuxt/**': {
@@ -229,7 +223,7 @@ export default defineNuxtConfig({
       },
       '/**': {
         headers: {
-          'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://66.179.240.190:3000 ws://localhost:4000",
+          'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://anadoludata.com;",
           'X-Content-Type-Options': 'nosniff',
           'X-Frame-Options': 'DENY',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
