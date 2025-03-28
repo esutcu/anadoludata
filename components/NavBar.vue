@@ -17,15 +17,20 @@
             class="text-gray-700 hover:text-anadolu-teal transition-colors duration-200"
             :class="{ 'font-medium': $route.path === item.link }"
           >
-            {{ item.label }}
+            <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
           </NuxtLink>
+          
+          <!-- Dil Seçici Eklendi -->
+          <LanguageSelector />
+          
           <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90" @click="acTeklifModal">
-            Teklif Al
+            <TranslatedText turkish="Teklif Al" english="Get Quo" />
           </Button>
         </div>
 
         <!-- Mobil Menü Butonu -->
-        <div class="md:hidden">
+        <div class="md:hidden flex items-center space-x-2">
+          <LanguageSelector />
           <button 
             @click="mobileMenuOpen = !mobileMenuOpen" 
             class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-anadolu-teal rounded-md p-1"
@@ -56,10 +61,10 @@
           :class="{ 'font-medium': $route.path === item.link }"
           @click="mobileMenuOpen = false"
         >
-          {{ item.label }}
+          <TranslatedText :turkish="item.labelTR" :english="item.labelEN" />
         </NuxtLink>
         <Button class="w-full bg-anadolu-teal hover:bg-anadolu-teal/90" @click="mobileTeklifOpen">
-          Teklif Al
+          <TranslatedText turkish="Teklif Al" english="Get Quo" />
         </Button>
       </div>
     </div>
@@ -70,17 +75,18 @@
 import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
 import { useRoute } from 'vue-router';
+import LanguageSelector from '~/components/LanguageSelector.vue';
+import TranslatedText from '~/components/TranslatedText.vue';
 
 const route = useRoute();
 const mobileMenuOpen = ref(false);
 
 const menuItems = [
-  { label: 'Ana Sayfa', link: '/' },
-  { label: 'Hizmetler', link: '/#hizmetler' },
-  { label: 'Teknolojiler', link: '/#teknolojiler' },
-  { label: 'Çalışmalarımız', link: '/referanslar' },
-  { label: 'Hakkımızda', link: '/#hakkimizda' }
-  // İletişim linki kaldırıldı
+  { labelTR: 'Ana Sayfa', labelEN: 'Home', link: '/' },
+  { labelTR: 'Hizmetler', labelEN: 'Services', link: '/#hizmetler' },
+  { labelTR: 'Teknolojiler', labelEN: 'Technologies', link: '/#teknolojiler' },
+  { labelTR: 'Çalışmalarımız', labelEN: 'Our Projects', link: '/referanslar' },
+  { labelTR: 'Hakkımızda', labelEN: 'About Us', link: '/#hakkimizda' }
 ];
 
 const emit = defineEmits(['acTeklifModal']);

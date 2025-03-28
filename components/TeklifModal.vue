@@ -14,91 +14,109 @@
             </svg>
           </button>
 
-          <h2 class="text-2xl font-bold mb-4 text-anadolu-teal">Teklif Formu</h2>
+          <h2 class="text-2xl font-bold mb-4 text-anadolu-teal">
+            <TranslatedText turkish="Teklif Formu" english="Req a Quo" />
+          </h2>
           
           <form class="space-y-4" @submit.prevent="gonderTeklifFormu">
   <div class="space-y-2">
-    <label for="adsoyad-input" class="text-sm font-medium">Ad Soyad <span class="text-red-500">*</span></label>
+    <label for="adsoyad-input" class="text-sm font-medium">
+      <TranslatedText turkish="Ad Soyad" english="Name" /> <span class="text-red-500">*</span>
+    </label>
     <input 
       id="adsoyad-input"
       type="text" 
       class="w-full p-2 border rounded" 
       v-model="formData.adSoyad"
       maxlength="100"
-      placeholder="Ad ve soyadınız"
+      :placeholder="language === 'tr' ? 'Ad ve soyadınız' : 'Your full name'"
       required 
     />
   </div>
   
   <div class="space-y-2">
-    <label for="teklif-email-input" class="text-sm font-medium">E-posta <span class="text-red-500">*</span></label>
+    <label for="teklif-email-input" class="text-sm font-medium">
+      <TranslatedText turkish="E-posta" english="Email" /> <span class="text-red-500">*</span>
+    </label>
     <input 
       id="teklif-email-input"
       type="email" 
       class="w-full p-2 border rounded" 
       v-model="formData.email"
       maxlength="100"
-      placeholder="E-posta adresiniz"
+      :placeholder="language === 'tr' ? 'E-posta adresiniz' : 'Your email address'"
       required 
     />
   </div>
   
   <div class="space-y-2">
-    <label for="teklif-telefon-input" class="text-sm font-medium">Telefon <span class="text-red-500">*</span></label>
+    <label for="teklif-telefon-input" class="text-sm font-medium">
+      <TranslatedText turkish="Telefon" english="Phone" /> <span class="text-red-500">*</span>
+    </label>
     <input 
       id="teklif-telefon-input"
       type="tel" 
       class="w-full p-2 border rounded" 
       v-model="formData.telefon"
       maxlength="20"
-      placeholder="Telefon numaranız"
+      :placeholder="language === 'tr' ? 'Telefon numaranız' : 'Your phone number'"
       required 
     />
   </div>
   
   <div class="space-y-2">
-    <label for="website-input" class="text-sm font-medium">Web Sitesi</label>
+    <label for="website-input" class="text-sm font-medium">
+      <TranslatedText turkish="Web Sitesi" english="Website" />
+    </label>
     <input 
       id="website-input"
       type="url" 
       class="w-full p-2 border rounded" 
       v-model="formData.website"
       maxlength="100"
-      placeholder="Varsa web siteniz"
+      :placeholder="language === 'tr' ? 'Varsa web siteniz' : 'Your website, if any'"
     />
   </div>
   
   <div class="space-y-2">
-    <label for="projeturu-input" class="text-sm font-medium">Proje Türü <span class="text-red-500">*</span></label>
+    <label for="projeturu-input" class="text-sm font-medium">
+      <TranslatedText turkish="Proje Türü" english="Type" /> <span class="text-red-500">*</span>
+    </label>
     <select 
       id="projeturu-input"
       class="w-full p-2 border rounded" 
       v-model="formData.projeTuru"
       required
     >
-      <option value="">Seçiniz</option>
-      <option value="Web Geliştirme">Web Geliştirme</option>
-      <option value="Mobil Uygulama">Mobil Uygulama</option>
-      <option value="E-Ticaret">E-Ticaret</option>
+      <option value="">{{ language === 'tr' ? 'Seçiniz' : 'Select' }}</option>
+      <option value="Web Geliştirme">{{ language === 'tr' ? 'Web Geliştirme' : 'Web Development' }}</option>
+      <option value="Mobil Uygulama">{{ language === 'tr' ? 'Mobil Uygulama' : 'Mobile Application' }}</option>
+      <option value="E-Ticaret">{{ language === 'tr' ? 'E-Ticaret' : 'E-Commerce' }}</option>
       <option value="Blockchain">Blockchain</option>
-      <option value="Diğer">Diğer</option>
+      <option value="Diğer">{{ language === 'tr' ? 'Diğer' : 'Other' }}</option>
     </select>
   </div>
   
   <div class="space-y-2">
-    <label for="detaylar-input" class="text-sm font-medium">Proje Detayları <span class="text-red-500">*</span></label>
+    <label for="detaylar-input" class="text-sm font-medium">
+      <TranslatedText turkish="Proje Detayları" english="Project Details" /> <span class="text-red-500">*</span>
+    </label>
     <textarea 
       id="detaylar-input"
       rows="4" 
       class="w-full p-2 border rounded"
       v-model="formData.detaylar"
       maxlength="500"
-      placeholder="Projeniz hakkında detaylı bilgi..."
+      :placeholder="language === 'tr' ? 'Projeniz hakkında detaylı bilgi...' : 'Detailed information about your project...'"
       required
     ></textarea>
     <div class="text-xs text-gray-500 flex justify-between">
-      <span>Kalan karakter: {{ 500 - formData.detaylar.length }}</span>
-      <span>Maksimum 500 karakter</span>
+      <span>
+        <TranslatedText turkish="Kalan karakter:" english="Left:" /> {{ 500 - formData.detaylar.length }}
+      </span>
+      <span>
+        <TranslatedText turkish="Maksimum 500 karakter" english="Max. 500" />
+      </span>
     </div>
   </div>
   
@@ -107,12 +125,21 @@
     type="submit" 
     :disabled="formGonderiliyor"
   >
-    {{ formGonderiliyor ? 'Gönderiliyor...' : 'Teklif Al' }}
+    <TranslatedText 
+      turkish="Teklif Al" 
+      english="Get Quo." 
+      v-if="!formGonderiliyor"
+    />
+    <TranslatedText 
+      turkish="Gönderiliyor..." 
+      english="Sending..." 
+      v-else
+    />
   </Button>
 
   <!-- Form gönderim durumu -->
   <div v-if="formDurumu" class="mt-4 p-3 rounded" :class="formDurumu.basarili ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'">
-    {{ formDurumu.mesaj }}
+    <TranslatedText :turkish="formDurumu.mesajTR" :english="formDurumu.mesajEN" />
   </div>
 </form>
         </div>
@@ -124,6 +151,8 @@
 <script setup>
 import { ref } from 'vue';
 import { Button } from '@/components/ui/button';
+import TranslatedText from '@/components/TranslatedText.vue';
+import { useLanguage } from '@/composables/useLanguage';
 
 const props = defineProps({
   modelValue: {
@@ -131,6 +160,8 @@ const props = defineProps({
     required: true
   }
 });
+
+const { language } = useLanguage();
 
 const emit = defineEmits(['update:modelValue']);
 
@@ -166,7 +197,8 @@ const gonderTeklifFormu = async () => {
     // Başarılı gönderim
     formDurumu.value = {
       basarili: true,
-      mesaj: 'Teklif talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapacağız.'
+      mesajTR: 'Teklif talebiniz başarıyla gönderildi. En kısa sürede size dönüş yapacağız.',
+      mesajEN: 'Your quote request has been sent successfully. We will get back to you as soon as possible.'
     };
     
     // Formu temizle
@@ -189,7 +221,8 @@ const gonderTeklifFormu = async () => {
     // Hata durumu
     formDurumu.value = {
       basarili: false,
-      mesaj: 'Teklif talebi gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
+      mesajTR: 'Teklif talebi gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.',
+      mesajEN: 'An error occurred while sending your quote request. Please try again later.'
     };
     console.error('Form gönderim hatası:', error);
   } finally {
