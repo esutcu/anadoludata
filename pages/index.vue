@@ -40,15 +40,16 @@
           </div>
           <div class="md:w-1/2">
             <div class="w-full h-auto relative bg-white/50 rounded-lg shadow-xl overflow-hidden">
-              <NuxtImg
-                src="/images/herotech.webp"
-                alt="AnadoluData Teknoloji"
-                preload
-                width="1600"
-                height="800"
-                format="webp"
-                class="w-full h-auto object-cover"
-              />
+        <img
+  src="/images/herotech.webp"
+  alt="AnadoluData Teknoloji"
+  width="1600"
+  height="800"
+  loading="eager"
+  decoding="async"
+  fetchpriority="high"
+  class="w-full h-auto object-cover"
+/>
             </div>
           </div>
         </div>
@@ -104,7 +105,7 @@
           <Card class="shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group hover:scale-105">
             <div class="relative h-48 overflow-hidden">
               <!-- Lazy yükleme -->
-              <NuxtImg
+              <img
                 src="/images/icons/social/mobile1.webp"
                 alt="Mobil Uygulamalar"
                 loading="lazy"
@@ -113,7 +114,7 @@
                 class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
               <!-- Hover'da gelen -->
-              <NuxtImg
+              <img
                 src="/images/icons/social/mobile2.webp"
                 alt="Mobil Uygulamalar"
                 loading="lazy"
@@ -403,7 +404,9 @@
             </p>
 
             <!-- Sosyal Medya Linkleri -->
-            <div class="flex space-x-4 mt-4">
+            <ClientOnly>
+            <div class="flex flex-row flex-nowrap items-center gap-4 mt-4">
+
               <a
                 href="https://instagram.com/anadoludata"
                 target="_blank"
@@ -459,6 +462,7 @@
                 </svg>
                </a>
             </div>
+          </ClientOnly>
           </div>
 
           <!-- Hizmetler -->
@@ -652,15 +656,15 @@ const gonderFormu = async () => {
   }
 };
 
-onMounted(() => {
-  useMotion(hero, {
-    initial: { opacity: 0, y: 100 },
-    enter: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 800 }
-    }
-  })
+//onMounted(() => {
+//  useMotion(hero, {
+//  initial: { opacity: 0, y: 100 },
+//    enter: { 
+//      opacity: 1, 
+//      y: 0,
+//      transition: { duration: 800 }
+//    }
+//  })
 
   useMotion(features, {
     initial: { opacity: 0, scale: 0.9 },
@@ -700,5 +704,5 @@ onMounted(() => {
     },
     visibleOnce: true
   })
-})
+
 </script>

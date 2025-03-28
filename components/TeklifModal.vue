@@ -7,7 +7,7 @@
         <div class="relative w-full max-w-md p-6 bg-white rounded-lg shadow-xl">
           <button 
             @click="$emit('update:modelValue', false)" 
-            class="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            class="absolute top-8 right-3 text-gray-500 hover:text-gray-700"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />

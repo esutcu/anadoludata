@@ -42,13 +42,29 @@ export default defineNuxtConfig({
         { property: 'og:url', content: 'https://anadoludata.com' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' }
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+        { name: 'apple-mobile-web-app-title', content: 'AnadoluData' },
+        { name: 'application-name', content: 'AnadoluData' },
+        { name: 'theme-color', content: '#0F666D' },
+        { name: 'msapplication-TileColor', content: '#0F666D' },
+        { name: 'msapplication-TileImage', content: '/favicon.ico' },
+        { name: 'msapplication-config', content: '/browserconfig.xml' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-title', content: 'AnadoluData' },
+        { name: 'application-name', content: 'AnadoluData' },
+        { name: 'theme-color', content: '#0F666D' },
+        { name: 'msapplication-TileColor', content: '#0F666D' },
+        { name: 'msapplication-TileImage', content: '/favicon.ico' },
+        { name: 'msapplication-config', content: '/browserconfig.xml' }
+
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'shortcut icon', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', href: '/favicon.ico' },
-        { rel: 'manifest', href: '/manifest.webmanifest' }
+        { rel: 'manifest', href: '/manifest.webmanifest' },
+        { rel: 'preload', as: 'image', href: '/images/herotech.webp' }
+        
       ],
       htmlAttrs: {
         lang: 'tr'
@@ -213,8 +229,7 @@ export default defineNuxtConfig({
       },
       '/**': {
         headers: {
-          'Content-Security-Policy':
-            "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://66.179.240.190:3000",
+          'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://66.179.240.190:3000 ws://localhost:4000",
           'X-Content-Type-Options': 'nosniff',
           'X-Frame-Options': 'DENY',
           'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -286,6 +301,7 @@ export default defineNuxtConfig({
   },
 
   image: {
+    provider: 'static',
     format: ['webp', 'avif', 'png', 'jpg'],
     quality: 80
   }
