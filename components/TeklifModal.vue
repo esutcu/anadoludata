@@ -177,7 +177,7 @@ const gonderTeklif = async () => {
     const { apiBase } = useRuntimeConfig().public;
     
     // Sunucuya gönder - doğru apiBase kullanarak
-    const response = await fetch(`${apiBase}/teklif`, {
+    const response = await fetch('/api/teklif', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

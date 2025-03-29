@@ -32,7 +32,7 @@ export default defineNuxtConfig({
        { charset: 'utf-8' },
        { 
          name: 'viewport',
-         content: 'width=device-width, initial-scale=1, maximum-scale=1'
+         content: 'width=device-width, initial-scale=1, maximum-scale=5'
        },
        { 
          name: 'description',
@@ -190,11 +190,11 @@ export default defineNuxtConfig({
     }
   },
 
- runtimeConfig: {
-   public: {
-     apiBase: process.env.API_BASE || '/api'
-   }
- },
+  runtimeConfig: {
+    public: {
+      apiBase: '/api'  // process.env.API_BASE || '/api' yerine direkt /api
+    }
+  },
 
  nitro: {
   prerender: false,  // Prerender'ı kapatalım
