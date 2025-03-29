@@ -403,93 +403,66 @@
               />
             </p>
 
-<!-- Sosyal Medya Linkleri -->
-<ClientOnly>
-  <div class="flex flex-col items-center gap-4 mt-4">
-    <!-- Sosyal medya butonları -->
-    <div class="flex flex-row items-center justify-center gap-4 w-full">
-      <!-- Instagram -->
-      <a
-        href="https://instagram.com/anadoludata"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
-        :title="language === 'tr' ? 'Instagram\'da AnadoluData' : 'AnadoluData on Instagram'"
-        :aria-label="language === 'tr' ? 'Instagram\'da AnadoluData' : 'AnadoluData on Instagram'"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round"
-          class="w-6 h-6 text-white"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-        </svg>
-      </a>
+            <!-- Sosyal Medya Linkleri -->
+            <ClientOnly>
+            <div class="flex flex-row flex-nowrap items-center gap-4 mt-4">
 
-      <!-- Twitter -->
-      <a
-        href="https://twitter.com/anadoludata"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
-        :title="language === 'tr' ? 'Twitter\'da AnadoluData' : 'AnadoluData on Twitter'"
-        :aria-label="language === 'tr' ? 'Twitter\'da AnadoluData' : 'AnadoluData on Twitter'"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round"
-          class="w-6 h-6 text-white"
-        >
-          <path d="M13.8645 10.4686L21.161 2H19.432L13.0965 9.35325L8.03629 2H2.19995L9.85189 13.1193L2.19995 22H3.92915L10.6197 14.2348L15.9636 22H21.8L13.8643 10.4686Z" />
-          <path d="M11.4962 13.2172L10.7208 12.11L4.55209 3.29961H7.20787L12.1862 10.4099L12.9616 11.517L19.4328 20.7593H16.777L11.4963 13.2175Z" />
-        </svg>
-      </a>
+              <a
+                href="https://instagram.com/anadoludata"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
+                :title="language === 'tr' ? 'Instagram\'da AnadoluData' : 'AnadoluData on Instagram'"
+                :aria-label="language === 'tr' ? 'Instagram\'da AnadoluData' : 'AnadoluData on Instagram'"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="w-6 h-6 text-white"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
 
-      <!-- GitHub -->
-      <a
-        href="https://github.com/anadoludata"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
-        :title="language === 'tr' ? 'GitHub\'da AnadoluData' : 'AnadoluData on GitHub'"
-        :aria-label="language === 'tr' ? 'GitHub\'da AnadoluData' : 'AnadoluData on GitHub'"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round"
-          class="w-6 h-6 text-white"
-        >
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77
-          5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5
-          4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-        </svg>
-      </a>
-    </div>
+              <a
+                href="https://twitter.com/anadoludata"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
+                :title="language === 'tr' ? 'Twitter\'da AnadoluData' : 'AnadoluData on Twitter'"
+                :aria-label="language === 'tr' ? 'Twitter\'da AnadoluData' : 'AnadoluData on Twitter'"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="w-6 h-6 text-white"
+                >
+                  <path d="M13.8645 10.4686L21.161 2H19.432L13.0965 9.35325L8.03629 2H2.19995L9.85189 13.1193L2.19995 22H3.92915L10.6197 14.2348L15.9636 22H21.8L13.8643 10.4686H13.8648H13.8645ZM11.4962 13.2172L10.7208 12.11L4.55209 3.29961H7.20787L12.1862 10.4099L12.9616 11.517L19.4328 20.7593H16.777L11.4963 13.2175V13.217L11.4962 13.2172Z" />
+                </svg>
+              </a>
 
-   <!-- Dil seçici bayraklar (tam alta sabit) -->
-   <div class="flex flex-row items-center justify-center gap-4 mt-2">
-      <button 
-        @click="setLanguage('tr')" 
-        class="p-1.5 rounded hover:bg-anadolu-beige/20 transition-colors"
-        :class="{'ring-2 ring-anadolu-beige': language === 'tr'}"
-        aria-label="Türkçe"
-      >
-        <img src="/images/TR.svg" alt="Türkçe" class="w-8 h-6">
-      </button>
-      <button 
-        @click="setLanguage('en')" 
-        class="p-1.5 rounded hover:bg-anadolu-beige/20 transition-colors"
-        :class="{'ring-2 ring-anadolu-beige': language === 'en'}"
-        aria-label="English"
-      >
-        <img src="/images/EN.svg" alt="English" class="w-8 h-6">
-      </button>
-    </div>
-  </div>
-</ClientOnly>
-
+              <a
+                href="https://github.com/anadoludata"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-2 rounded-full hover:bg-anadolu-beige/20 transition-colors"
+                :title="language === 'tr' ? 'GitHub\'da AnadoluData' : 'AnadoluData on GitHub'"
+                :aria-label="language === 'tr' ? 'GitHub\'da AnadoluData' : 'AnadoluData on GitHub'"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="w-6 h-6 text-white"
+                >
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77
+                        5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5
+                        4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+               </a>
+            </div>
+          </ClientOnly>
           </div>
 
           <!-- Hizmetler -->
