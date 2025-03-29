@@ -52,14 +52,16 @@ useHead({
 // Route handling
 onMounted(() => {
   const router = useRouter()
-  router.afterEach(() => {
-    // Performans için requestAnimationFrame kullan
-    requestAnimationFrame(() => {
-      window.scrollTo({ 
-        top: 0, 
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  router.afterEach((to) => {
+    // Hash varsa scroll yapmayı engelle
+    if (!to.hash) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ 
+          top: 0, 
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        })
       })
-    })
+    }
   })
 })
 </script>
