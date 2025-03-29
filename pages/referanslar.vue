@@ -1,6 +1,7 @@
 <template>
   <div>
-    <NavBar @acTeklifModal="acTeklifModal" />
+    <!-- NavBar bileşenini ekleyelim - isProjectsPage prop'unu true olarak geçelim -->
+    <NavBar @acTeklifModal="acTeklifModal" :isProjectsPage="true" />
     
     <section class="py-16 bg-gradient-to-b from-anadolu-beige/10 to-anadolu-teal/5">
       <div class="container mx-auto px-4">
