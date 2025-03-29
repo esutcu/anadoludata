@@ -81,7 +81,7 @@
       <!-- Contact Button -->
       <div class="hidden md:block ml-6">
         <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90 text-white" @click="teklifModalAcik = true">
-          <TranslatedText turkish="Teklif Al" english="Get Quote" />
+          <TranslatedText turkish="Teklif Al" english="Get Quo" />
         </Button>
       </div>
 
