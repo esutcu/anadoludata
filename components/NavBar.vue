@@ -1,87 +1,90 @@
-<!-- components/NavBar.vue -->
 <template>
   <div class="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="container mx-auto flex h-16 items-center justify-between px-4">
-      <!-- Logo - Anasayfaya dönüş için kullanılabilir -->
+    <div class="container mx-auto flex h-20 items-center justify-between px-6">
+      <!-- Logo ve İsim - Büyütülmüş -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center gap-2">
-          <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-8 w-auto">
-          <span class="text-xl font-bold text-anadolu-teal">AnadoluData</span>
+        <a href="/" class="flex items-center gap-3 hover:opacity-90 transition-opacity duration-300">
+          <img src="/images/logo.svg" alt="AnadoluData Logo" class="h-10 w-auto">
+          <span class="text-2xl font-bold text-anadolu-teal tracking-tight">AnadoluData</span>
         </a>
       </div>
 
-      <!-- Desktop Menu - Sadeleştirilmiş -->
-      <div class="hidden md:flex">
+      <!-- Desktop Menu - Yeniden Düzenlenmiş -->
+      <div class="hidden md:flex flex-1 justify-center">
         <NavigationMenu>
-          <NavigationMenuList class="space-x-6">
-            <!-- Anasayfa kaldırıldı -->
-
+          <NavigationMenuList class="space-x-8">
             <NavigationMenuItem>
               <NavigationMenuLink 
                 :href="isProjectsPage ? '/#hizmetler' : '#hizmetler'" 
-                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                class="text-base font-medium text-anadolu-navy transition-all duration-300 hover:text-anadolu-teal relative group"
                 @click="!isProjectsPage && kaydirSectionIcin('hizmetler')">
-                <TranslatedText turkish="Hizmetler" english="Services" />
+                <TranslatedText turkish="Hizmetlerimiz" english="Our Services" />
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-anadolu-teal transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuLink 
                 :href="isProjectsPage ? '/#teknolojiler' : '#teknolojiler'" 
-                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                class="text-base font-medium text-anadolu-navy transition-all duration-300 hover:text-anadolu-teal relative group"
                 @click="!isProjectsPage && kaydirSectionIcin('teknolojiler')">
                 <TranslatedText turkish="Teknolojiler" english="Technologies" />
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-anadolu-teal transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuLink 
                 :href="isProjectsPage ? '/#hakkimizda' : '#hakkimizda'" 
-                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition"
+                class="text-base font-medium text-anadolu-navy transition-all duration-300 hover:text-anadolu-teal relative group"
                 @click="!isProjectsPage && kaydirSectionIcin('hakkimizda')">
-                <TranslatedText turkish="Hakkımızda" english="About" />
+                <TranslatedText turkish="Kurumsal" english="About Us" />
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-anadolu-teal transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuLink 
                 href="/referanslar" 
-                class="text-base font-medium text-anadolu-navy hover:text-anadolu-teal transition">
-                <TranslatedText turkish="Projeler" english="Projects" />
+                class="text-base font-medium text-anadolu-navy transition-all duration-300 hover:text-anadolu-teal relative group">
+                <TranslatedText turkish="Projelerimiz" english="Projects" />
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-anadolu-teal transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </NavigationMenuLink>
             </NavigationMenuItem>
-
-            <!-- İletişim kaldırıldı -->
           </NavigationMenuList>
         </NavigationMenu>
       </div>
 
-      <!-- Sadece Dil Seçici (Desktop) - Büyütülmüş bayraklar -->
-      <div class="hidden md:flex items-center">
+      <!-- Sağ Taraf (Dil Seçici + Seperatör + Teklif Butonu) -->
+      <div class="hidden md:flex items-center space-x-6">
+        <!-- Dil Seçici - Yeniden Tasarlanmış -->
         <div class="flex items-center space-x-3">
           <button 
             @click="setLanguage('tr')" 
-            class="p-1 rounded hover:bg-gray-200 transition-colors"
-            :class="{'ring-2 ring-anadolu-teal': language === 'tr'}"
+            class="p-1.5 rounded-md hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+            :class="{'ring-2 ring-anadolu-teal ring-opacity-50': language === 'tr'}"
             aria-label="Türkçe"
           >
-            <img src="/images/TR.svg" alt="Türkçe" class="w-8 h-6">
+            <img src="/images/TR.svg" alt="Türkçe" class="w-8 h-6 shadow-sm">
           </button>
           <button 
             @click="setLanguage('en')" 
-            class="p-1 rounded hover:bg-gray-200 transition-colors"
-            :class="{'ring-2 ring-anadolu-teal': language === 'en'}"
+            class="p-1.5 rounded-md hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+            :class="{'ring-2 ring-anadolu-teal ring-opacity-50': language === 'en'}"
             aria-label="English"
           >
-            <img src="/images/EN.svg" alt="English" class="w-8 h-6">
+            <img src="/images/EN.svg" alt="English" class="w-8 h-6 shadow-sm">
           </button>
         </div>
-      </div>
 
-      <!-- Contact Button -->
-      <div class="hidden md:block ml-6">
-        <Button class="bg-anadolu-teal hover:bg-anadolu-teal/90 text-white" @click="teklifModalAcik = true">
-          <TranslatedText turkish="Teklif Al" english="Get Quo" />
+        <!-- Dikey Seperatör -->
+        <div class="h-8 w-px bg-gray-200"></div>
+
+        <!-- Teklif Butonu - Yeniden Tasarlanmış -->
+        <Button 
+          class="bg-anadolu-teal hover:bg-anadolu-teal/90 text-white transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg" 
+          @click="teklifModalAcik = true">
+          <TranslatedText turkish="Teklif Alın" english="Get Quote" />
         </Button>
       </div>
 

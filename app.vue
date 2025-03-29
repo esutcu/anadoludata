@@ -1,42 +1,65 @@
 <!-- app.vue -->
 <template>
   <NuxtLayout>
+    <!-- Ana içerik - En yüksek öncelik -->
     <NuxtPage />
 
-    <!-- Yukarı Çık Butonu sadece client tarafında yüklensin -->
+    <!-- Lazy loading ile gecikmeli yüklenen bileşenler -->
+    <LazyTeklifModal 
+      v-if="teklifModalAcik" 
+      v-model="teklifModalAcik" 
+      lazy 
+    />
+
+    <!-- Client-side only ve lazy loading -->
     <ClientOnly>
-      <ScrollToTop />
+      <!-- Scroll butonu viewport'a girince yüklensin -->
+      <LazyScrollToTop />
+      
+      <!-- PWA prompt gecikmeli yüklensin -->
+      <Suspense>
+        <LazyAddToHome />
+      </Suspense>
     </ClientOnly>
-
-    <!-- Teklif Modalı sadece açıldığında DOM'a girsin -->
-    <TeklifModal v-if="teklifModalAcik" v-model="teklifModalAcik" />
-
-    <AddToHome />
   </NuxtLayout>
 </template>
 
 <script setup>
+// Dynamic imports
+const ScrollToTop = defineAsyncComponent(() => 
+  import('~/components/ScrollToTop.vue')
+)
+const TeklifModal = defineAsyncComponent(() => 
+  import('~/components/TeklifModal.vue')
+)
+const AddToHome = defineAsyncComponent(() => 
+  import('@/components/AddToHome.vue')
+)
+
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import ScrollToTop from '~/components/ScrollToTop.vue'
-import TeklifModal from '~/components/TeklifModal.vue'
-import AddToHome from '@/components/AddToHome.vue'
 
-// Teklif modal durumunu kontrol etmek için
+// State
 const teklifModalAcik = ref(false)
 
-// <html lang="tr"> ayarı
+// SEO
 useHead({
   htmlAttrs: {
     lang: 'tr'
   }
 })
 
-// Sayfa değişince otomatik yukarı kaydır
+// Route handling
 onMounted(() => {
   const router = useRouter()
   router.afterEach(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Performans için requestAnimationFrame kullan
+    requestAnimationFrame(() => {
+      window.scrollTo({ 
+        top: 0, 
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      })
+    })
   })
 })
 </script>
@@ -44,5 +67,15 @@ onMounted(() => {
 <style>
 html {
   scroll-behavior: smooth;
+  /* Performans için */
+  content-visibility: auto;
+  contain: paint;
+}
+
+/* Performans için animasyon optimizasyonu */
+.v-enter-active,
+.v-leave-active {
+  will-change: opacity;
+  transform: translateZ(0);
 }
 </style>
